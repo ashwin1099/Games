@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games website</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <style>
+    nav {
+      background-color: purple; /* Light purple */
+      border-radius: 10px;
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      display: none;
+    }
+    
+    body {
+      background-color: #18182d;
+      color: white;
+    }
+    
+    .logo {
+      float: left;
+      padding: 10px;
+    }
+    
+    .logo img {
+      height: 40px;
+    }
+    
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      float: right;
+    }
+    
+    li {
+      float: left;
+    }
+    
+    li a {
+      display: block;
+      color: white; /* Dark purple */
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    
+    li a:hover {
+      background-color: #c8b4ff; /* Hover color */
+    }
+    .featured{
+      text-align: center;
+      
+      font-size: 2em;
+    }
+    .poster {
+      display: flex;
+      justify-content: center;
+      
+    }
+    
+    .poster img {
+      border: transparent;
+      border-radius: 50px;
+      width: 50%;
+      height: 410px;
+      padding: 30px;
+      transition: transform 0.7s;
+      cursor: pointer;
+      margin-top: -50px;
+    }
+    
+    .poster img:hover {
+       transform: scale(1.04); 
+    } 
+    .poster-game p{
+      font-size: 19px;
+      font-weight: normal;
+    }
+    .off{
+      height: 25px;
+      width: 35px;
+      background-color: red;
+    }
+    .poster-game .off{
+      font-weight: normal;
+    
+      font-size: 15px;
+      border-radius: 4px;
+    }
+    .search-bar {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+     
+    }
+    
+    .search-bar input[type="text"] {
+     
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      transition: width 0.3s;
+    }
+    
+    .search-bar input[type="text"]:focus {
+      width: 250px;
+    }
+    
+    .search-bar button {
+      padding: 8px 15px;
+      background-color: purple;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .search-bar button:hover {
+      background-color: #7f5b91;
+    }
+    
+    .poster-game{
+      font-size: 40px;
+      text-align: center;
+      margin-top: 0;
+      color: white;
+    }
+    .container{
+      display: flex;
+      justify-content: center;
+      
+    }
+    .get-nowf{
+      height: 40px;
+      width: 100px;
+      font-size: 18px;
+      background-color: green;
+      border-radius: 10px;
+      color: white;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+    .get-nowf:hover{
+      transform: scale(1.1);
+    }
+    #popular, #most-played, #new-games, #free{
+      margin: 50px 0 0 20px ;
+    }
+    .head{
+      display: flex;
+    }
+    .view-more{
+      display: inline-block;
+      height: 40px;
+      width: 100px;
+     margin-left: 20px;
+      margin-top: 25px;
+      border: 2px solid grey;
+      border-radius: 10px;
+      background-color: transparent;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.3s ease-in-out;
+      
+    }
+    .view-more:hover{
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    .pop-head, .new-head, .most-head, .new-head{
+      font-size: 28px;
+      margin-left: 25px;
+      display: inline;
+    }
+    .pop{
+      display: flex;
+      margin: 5px;
+     padding: 2px;
+     justify-content: space-between;
+     flex-wrap: wrap;
+      
+    }
+    .gta{
+      cursor: pointer;
+    }
+    .pop img{
+      height: 35vh;
+      width: 12em;
+      border-radius: 5px;
+      transition: opacity 0.3s ease;
+    }
+    .pop img:hover{
+      opacity: 0.7;
+    }
+    .gta5{
+      font-size: larger;
+    }
+    .pop a{
+      text-decoration: none;
+      color: white;
+    }
+    
+    .pop-game{
+      margin: 0 20px;
+    }
+    
+    .foot{
+      text-align: center;
+      margin-top: 60px;
+    }
+    .top{
+      cursor: pointer;
+      height: 40px;
+      width: 40px;
+      font-size: 20px;
+      margin-left: 160px;
+      background-color: transparent;
+      color: white;
+      border-radius: 10px;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+    .top:hover{
+      background-color: red;
+      transform: scale(1.1);
+    }
+    .rating {
+      color: gold;
+      font-size: 24px;
+    }
+    
+    .star {
+      display: inline-block;
+    }
+    
+    @media (max-width: 900px) {
+      .poster img {
+        height: 280px; /* Set the desired height for the image */
+      }
+      .poster h2{
+        font-size: 24px;
+      }
+    }
+    
+    @media (max-width: 750px) {
+      .poster img {
+        height: 200px; /* Set the desired height for the image */
+      }
+      .poster h2{
+        font-size: medium;
+      }
+    }
+    @media (max-width: 350px) {
+      .parent{
+        display: none;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#popular">Popular</a></li>
+      <li><a href="#">Reviews</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+  <section id="home">
+  <div class="search-bar">
+    <input type="text" placeholder="Search" >
+    <button>Search</button>
+  </div>
+  <div class="parent">
+  <h2 class="featured">Sponsored Game</h2>
+  <div class="poster">
+    <img alt="Red Dead Redemption 2 for PC" src="https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fheather%2Fhome%2FEGS_RockstarGames_RedDeadRedemption2_G1A_00-1920x1080-308f101576da37225c889173094f373f2afc56c1.jpg" class="css-1bbjmcj" > <br>
+    
+ 
+  <h2 class="poster-game">Red Dead Redemption 2 <br> <p style="display: inline;"><del>&#x20B9 1,499</del> &#x20B9 749.50 <div class="off" style="display:inline-block;">-50%</div></p><a href="https://store.epicgames.com/en-US/p/red-dead-redemption-2" target="_blank">
+    <button class="get-nowf">Get now</button></a></h2>
+</div>
+</div>
+</section>
+
+  <section id="popular">
+    <div class="head">
+        <h3 class="pop-head">Popular games</h3>
+        <a href="https://store.epicgames.com/en-US/collection/most-popular" target="_blank">
+        <button class="view-more">View more</button></a>
+    </div>
+    <div class="pop">
+      <div class="pop-game">
+        <a href="https://store.epicgames.com/en-US/p/grand-theft-auto-v" target="_blank">
+        <img src="https://th.bing.com/th/id/OIP.5ahlOpJfWu9CxADOtx20LQHaNK?pid=ImgDet&rs=1" alt="GTA 5"><BR>
+        <B class="gta5">Grand Theft Auto 5</B>
+        <p>Price: <del>&#x20B9 2321.44</del> ,  &#x20B9 1,160.72</p>
+        </a>
+        <div class="rating">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span style="color:white">5/5</span>
+        </div>
+        
+      </div>
+      
+      <div class="pop-game">
+        <a href="https://store.epicgames.com/en-US/p/fifa-23" target="_blank">
+        <img src="https://th.bing.com/th/id/R.7672b1b64077959166d54f7bd2aded15?rik=4qOYf7Y%2bYHJv1w&riu=http%3a%2f%2fwww.diskifans.co.za%2fwp-content%2fuploads%2f2022%2f07%2ffifa-23-cover-star-kylian-mbappe.jpg&ehk=Btr2c8JeZrn2GDceAcVmjWw%2b767MaHUw8A9%2fjYcKwwc%3d&risl=&pid=ImgRaw&r=0 alt="FIFA 23"><BR>
+        <B class="gta5">FIFA 23</B>
+        <p>Price: <del>&#x20B9 3,499</del>   &#x20B9 1,049.70</p>
+        </a>
+        <div class="rating">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span style="color:white">5/5</span>
+        </div>
+      </div>
+
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/valorant" target="_blank">
+      <img src="https://i.pinimg.com/originals/3a/05/72/3a0572bd2cb47ff2893b4b35345d4a80.jpg" alt="VALORENT"><BR>
+      <B class="gta5">Valorent</B>
+      <p>Price: <del>&#x20B9 3,999</del>   Free</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
+        <span style="color:white">4/5</span>
+      </div>
+    </div>
+
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/cyberpunk-2077" target="_blank">
+      <img src="https://th.bing.com/th/id/OIP.iAZ53QmUilFd0HOrZejBNQHaK-?pid=ImgDet&rs=1" alt="Cyberpunk"><BR>
+      <B class="gta5">Cyberpunk-2077</B>
+      <p>Price: <del>&#x20B9 2,999</del>   &#x20B9 1,499.50</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
+        <span class="star">&#9734;</span>
+        <span style="color:white">3/5</span>
+      </div>
+    </div>
+
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/ark7" target="_blank">
+      <img src="https://www.gameback.it/wp-content/uploads/Ark-Survival-Evolved-cover.jpg" alt="ark"><BR>
+      <B class="gta5">ARK: Survival Evolved</B>
+      <p>Price:    &#x20B9 469</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
+        <span style="color:white">4/5</span>
+      </div>
+    </div>
+    
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/cities-skylines" target="_blank">
+      <img src="https://th.bing.com/th/id/OIP.KxpUNWJ7RxrqTWqPjSmcuAHaJ4?pid=ImgDet&rs=1" alt="acity-skylines"><BR>
+      <B class="gta5">City Skylines</B>
+      <p>Price: <del>&#x20B9 2,321.44</del>   &#x20B9 1160.72</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span style="color:white">5/5</span>
+      </div>
+    </div>
+  </div>
+  </section>
+
+
+  <section id="most-played">
+    <div class="head">
+      <h3 class="most-head">Most Played</h3>
+      <a href="https://store.epicgames.com/en-US/collection/most-popular" target="_blank">
+      <button class="view-more">View more</button></a>
+  </div>
+  <div class="pop">
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/among-us" target="_blank">
+      <img src="https://th.bing.com/th/id/OIP.OVlz1QBXqKXI26tAw_npSgAAAA?pid=ImgDet&rs=1" alt="Among us"><BR>
+      <B class="gta5">Among Us</B>
+      <p>Price: <del>&#x20B9 499</del> &#x20B9 119</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
+        <span class="star">&#9734;</span>
+        <span style="color:white">3/5</span>
+      </div>
+    </div>
+    
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/hitman-3" target="_blank">
+      <img src="https://i.pinimg.com/originals/9f/2b/1a/9f2b1a45f6d841b28546258caee8da69.jpg"alt="Hitman"><BR>
+      <B class="gta5">HITMAN World of <BR>Assassination</B>
+      <p>Price: <del>&#x20B9 3,499</del>   &#x20B9 1,049.70</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span style="color:white">5/5</span>
+      </div>
+    </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/farming-simulator-22" target="_blank">
+    <img src="https://th.bing.com/th/id/OIP.FE8AQ9aIQxqdyixe9x2TPQHaKT?pid=ImgDet&rs=1" alt="Farming Simulator 22"><BR>
+    <B class="gta5">Farming Simulator 22</B>
+    <p>Price: <del>&#x20B9 2,509</del> &#x20B9 1,379.95 </p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">4/5</span>
+    </div>
+  </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/satisfactory" target="_blank">
+    <img src="https://th.bing.com/th/id/OIP.E4LErYOqJDjT_7yLui7bLgHaLH?pid=ImgDet&rs=1" alt="Satisfactory"><BR>
+    <B class="gta5">Satisfactory</B>
+    <p>Price: <del>&#x20B9 1,999</del>   &#x20B9 745</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">3/5</span>
+    </div>
+  </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/football-manager-2023" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/en/6/6a/Football_Manager_2023_cover_image.jpg" alt="FM 2023"><BR>
+    <B class="gta5">Football Manager 2023</B>
+    <p>Price:    &#x20B9 3,399</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">3/5</span>
+    </div>
+  </div>
+  
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/battlefield-2042" target="_blank">
+    <img src="https://th.bing.com/th/id/R.42485fb976cfb0e548d4aa34a6681ad5?rik=60Pw4eQxSOBpNA&pid=ImgRaw&r=0" alt="acity-skylines"><BR>
+    <B class="gta5">Battlefield™ 2042</B>
+    <p>Price: <del>&#x20B9 2,999</del>   &#x20B9 749</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">4/5</span>
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+
+  <section id="new-games">
+    <div class="head">
+      <h3 class="new-head">Newly Arrived </h3>
+      <a href="https://store.epicgames.com/en-US/collection/most-popular" target="_blank">
+      <button class="view-more">View more</button></a>
+  </div>
+  <div class="pop">
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/mokoko-x-e2b09d" target="_blank">
+      <img src="https://cdn.akamai.steamstatic.com/steam/apps/1789400/ss_8bd0d29399ae0aafcbcb80d11bc709cc7dfee213.1920x1080.jpg?t=1649293148" alt="MOKOKOX"><BR>
+      <B class="gta5">Mokoko X</B>
+      <p>Price: <del>&#x20B9 359</del>  &#x20B9 269.25</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
+        <span style="color:white">4/5</span>
+      </div>
+    </div>
+    
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/operation-new-earth-1d27c4" target="_blank">
+      <img src="https://th.bing.com/th/id/OIP.KvEQazG_QEmg1cc6WUU8vAHaLH?pid=ImgDet&rs=1" alt="OP EARTH"><BR>
+      <B class="gta5">Operation New Earth</B>
+      <p>Price: <del>&#x20B9 2,369</del>   Free</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span style="color:white">5/5</span>
+      </div>
+    </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/star-trek-resurgence" target="_blank">
+    <img src="https://th.bing.com/th/id/R.8f205b5a9f912075ab317a7164122ea9?rik=EMcx6qFFJUAs%2fA&pid=ImgRaw&r=0" alt="VALORENT"><BR>
+    <B class="gta5">Star Treck Resurgence</B>
+    <p>Price: &#x20B9 1,429</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">3/5</span>
+    </div>
+  </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/the-lord-of-the-rings-gollum-436d4f" target="_blank">
+    <img src="https://th.bing.com/th/id/R.3d25b6e12516e741e1cccf00c4b47620?rik=OGUinWl1XF4YCQ&pid=ImgRaw&r=0" alt="Cyberpunk"><BR>
+    <B class="gta5">The Lord of the Rings</B>
+    <p>Price:   &#x20B9 2,399</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">2/5</span>
+    </div>
+  </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/skeletal-avengers-af85a4" target="_blank">
+    <img src="https://th.bing.com/th/id/OIP.3tpAcv57K2ubi7HXCNrulgHaJ4?pid=ImgDet&rs=1" alt="sk"><BR>
+    <B class="gta5">Skeletal Avenger</B>
+    <p>Price:    &#x20B9 539</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">3/5</span>
+    </div>
+  </div>
+  
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/the-creepy-syndrome-90fc19" target="_blank">
+    <img src="https://th.bing.com/th/id/OIP.sG3oli2y4vLM_R9kexaVPgAAAA?pid=ImgDet&rs=1" alt="creepy"><BR>
+    <B class="gta5">The Creepy Syndrome</B>
+    <p>Price:  &#x20B9 179</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">4/5</span>
+    </div>
+  </div>
+</div>
+
+  </section>
+
+  <section id="free">
+    <div class="head">
+      <h3 class="new-head">Free Games</h3> 
+      <a href="https://store.epicgames.com/en-US/free-games" target="_blank">
+      <button class="view-more">View more</button></a>
+  </div>
+  <div class="pop">
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/pubg-59c1d9a" target="_blank">
+      <img src="https://img.elo7.com.br/product/zoom/1D1DE4D/poster-pubg-playerunknowns-battlegrounds-lo001-90x-0-cm-cartaz-pubg.jpg" alt="pubg"><BR>
+      <B class="gta5">PUBG PC</B>
+      <p>Price: Free</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span style="color:white">5/5</span>
+      </div>
+    </div>
+    
+    <div class="pop-game">
+      <a href="https://store.epicgames.com/en-US/p/fall-guys" target="_blank">
+      <img src="https://th.bing.com/th/id/OIP.GrzpPQO5_LKH381FpKeaewHaJ4?pid=ImgDet&rs=1 "alt="Fall guys"><BR>
+      <B class="gta5">Fall Guys</B>
+      <p>Price:  Free</p>
+      </a>
+      <div class="rating">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
+        <span style="color:white">4/5</span>
+      </div>
+    </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/fortnite" target="_blank">
+    <img src="https://th.bing.com/th/id/R.a5a9bf05703396a10f55730096583890?rik=%2bbpG9i9JRXtxjg&pid=ImgRaw&r=0" alt="Fortnite"><BR>
+    <B class="gta5">Fortnite</B>
+    <p>Price: Free</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span style="color:white">5/5</span>
+    </div>
+  </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/mtg-arena" target="_blank">
+    <img src="https://static.metafy.gg/uploads/store/game/8c4060b4-af1f-43a6-8eb8-cb4f2a19d513/poster/da3b6fde1f4ff018c4ec3f6e71cfeb4a.jpg" alt="mgt"><BR>
+    <B class="gta5">Magic: The Gathering <br> Arena</B>
+    <p>Price:   Free</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">3/5</span>
+    </div>
+  </div>
+
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/genshin-impact" target="_blank">
+    <img src="https://nexus-games.net/wp-content/uploads/2021/02/Genshin-Impact-Free-Download-By-Nexusgames.to-2.jpeg" alt="Genshin Impact"><BR>
+    <B class="gta5">Genshin Impact</B>
+    <p>Price:   Free</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span style="color:white">5/5</span>
+    </div>
+  </div>
+  
+  <div class="pop-game">
+    <a href="https://store.epicgames.com/en-US/p/the-sims-4" target="_blank">
+    <img src="https://th.bing.com/th/id/OIP.Ho3MTz4k2UJ6pkZWEfYSXwAAAA?pid=ImgDet&rs=1" alt="The Sims"><BR>
+    <B class="gta5">The Sims™  4</B>
+    <p>Price: Free</p>
+    </a>
+    <div class="rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9734;</span>
+      <span style="color:white">4/5</span>
+    </div>
+  </div>
+</div>
+
+    
+  </section>
+
+  
+    
+  </section>
+
+  <footer>
+    <div class="foot">
+      <p style="display: inline;">This website is for fun &copy; Ashwin Saurav. All rights reserved.</p>
+      <a href="#top">
+      <button class="top"><i class='bx bxs-upvote'></i></button></a>
+    </div>
+  </footer>
+  
+</body>
+</html>
